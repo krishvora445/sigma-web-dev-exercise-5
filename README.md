@@ -2,7 +2,7 @@
 
 This repository contains my solution for Exercise 5 of the Sigma Web Development course. The challenge was to implement a complete webpage layout based on a design image, featuring a fixed header, multiple content sections, and a detailed footer.
 
-![Screenshot of the final webpage layout](demo.mp4)
+![video of the final webpage layout](demo.mp4)
 
 ---
 
