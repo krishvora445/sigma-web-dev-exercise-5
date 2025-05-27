@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* --- COLOR PALETTE & VARIABLES --- */
+:root {
+    --bg-color: #1a1a1d;
+    --navbar-color: #c3073f;
+    --container-bg: #4e4e50;
+    --card-bg: #f5f5f5;
+    --welcome-bg: #2d2d30;
+    --footer-bg: #6f2232;
+    --text-light: #ffffff;
+    --text-dark: #1a1a1d;
+    --text-accent: #950740;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* --- GENERAL STYLES & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    
+    /* --- CHANGE #2: Add space at the top for the fixed navbar --- */
+    /* This pushes all content down so it doesn't hide under the navbar */
+    padding-top: 85px; 
+}
+/* .plogo {
+    box-shadow: 0 0 25px rgba(195, 7, 63, 0.4);
+    border: 2px solid var(--navbar-color);
+    border-radius: 40px 40px;
+    padding: 25px;
+    position: fixed;
+    top: auto;
+    bottom: 80px; 
+    right: 40px; 
+    left: auto; 
+    z-index: 1000;
+    animation: slideInUp 1s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plogo:hover {
+    transform: scale(1.4);
+    box-shadow: 0 0 25px rgba(195, 7, 63, 0.4);
+} */
+
+/* This is the NEW, corrected .plogo style */
+.plogo {
+    /* We set a specific size for our logo container */
+    width: 60px; 
+    height: 60px;
+    
+    border-radius: 50%; /* 50% makes a perfect circle */
+    box-shadow: 0 0 25px rgba(195, 7, 63, 0.4);
+    border: 3px solid var(--navbar-color);
+    position: fixed;
+    bottom: 40px; /* Adjusted position slightly */
+    right: 40px;
+    z-index: 1000;
+    overflow: hidden; /* This hides any part of the image outside the circle */
+    transition: transform 0.3s ease;
+}
+
+/* This new rule styles the actual image inside the .plogo div */
+.plogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures your image fills the circle without stretching */
+}
+
+/* We can keep the hover effect on the main container */
+.plogo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(195, 7, 63, 0.4);
+}
+
+
+/* --- KEYFRAMES FOR ANIMATIONS --- */
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* --- HEADER / NAVBAR STYLING --- */
+.navbar {
+    /* --- CHANGE #1: Use position:fixed for guaranteed sticking --- */
+    position: fixed;
+    top: 10px;
+    left: 10px; /* Position from left */
+    right: 10px; /* Position from right */
+    z-index: 999; /* Keeps it on top of everything */
+    
+    background-color: var(--navbar-color);
+    padding: 4px 35px;
+    /* margin is no longer needed with this positioning */
+    border-radius: 45px;
+    animation: slideInUp 0.6s ease-out;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--text-light);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- MAIN CONTENT & LAYOUT --- */
+main {
+    padding: 2rem 5%;
+}
+
+.top-container {
+    background-color: var(--container-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    animation: slideInUp 0.8s ease-out;
+}
+
+/* --- CARD STYLING --- */
+.card {
+    background: var(--card-bg);
+    color: var(--text-dark);
+    width: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px var(--card-shadow);
+}
+
+.image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.content {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.content h2 {
+    color: var(--text-accent);
+    margin-bottom: 0.5rem;
+}
+
+.button {
+    padding: 1rem;
+}
+
+.button button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--text-accent);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+    background-color: var(--navbar-color);
+}
+
+/* --- WELCOME SECTION STYLING --- */
+.welcome-section {
+    background-color: var(--welcome-bg);
+    text-align: center;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-radius: 50px;
+    border: 2px solid var(--container-bg);
+    /* animation: slideInUp 1s ease-out; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(195, 7, 63, 0.4);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.welcome-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* --- FOOTER STYLING --- */
+
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--text-light); /* Ensure text is light on dark background */
+    padding: 3rem 5%; /* Increased padding */
+    margin-top: 2rem;
+    animation: slideInUp 1.2s ease-out;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+    justify-content: space-between;
+    gap: 2rem; /* Space between sections */
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and fill space */
+    min-width: 250px; /* Minimum width before wrapping */
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-light); /* Ensure heading is light */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Underline effect for footer section titles */
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--navbar-color); /* Use navbar color for accent */
+}
+
+.footer-logo-text {
+    font-family: 'Playfair Display', serif; /* Match welcome section font for logo */
+    font-size: 2rem;
+}
+
+.footer-section p {
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #ccc; /* Slightly lighter gray for paragraph text */
+}
+
+.footer-section.links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section.links ul li a {
+    text-decoration: none;
+    color: #ccc;
+    display: block;
+    margin-bottom: 0.7rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+    color: var(--text-light);
+    transform: translateX(5px); /* Slight move on hover */
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* Vertically center text/icon */
+    text-align: center;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--container-bg); /* Use container bg for icon background */
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--navbar-color); /* Use navbar color on hover */
+    transform: translateY(-3px) scale(1.1); /* Pop effect */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--container-bg); /* Separator line */
+    font-size: 0.9rem;
+    color: #aaa; /* Lighter gray for bottom text */
+}
